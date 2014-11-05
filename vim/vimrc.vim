@@ -73,7 +73,7 @@ filetype plugin indent on
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " DISPLAY SETTINGS
-colorscheme solarized   " sets the colorscheme
+" colorscheme solarized   " sets the colorscheme
 set background=dark     " enable for dark terminals
 set scrolloff=5         " 2 lines above/below cursor when scrolling
 set showmatch           " show matching bracket (briefly jump)
@@ -212,9 +212,9 @@ set splitright
 set number
 
 " Highlight uwanted spaces, nice for tsv files viewing
-set list
-set listchars=trail:·
-set listchars=tab:→→
+"set list
+"set listchars=trail:·
+"set listchars=tab:→→
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
