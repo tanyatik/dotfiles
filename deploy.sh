@@ -9,8 +9,12 @@ printf 'Configuring Vim...\n'
 $DIR/vim/deploy.sh
 printf 'Configuring Vim...DONE\n'
 
+printf 'Configuring zsh & ohmyzsh...\n'
+$DIR/zsh/deploy.sh
+printf 'Configuring zsh...DONE\n'
+
 if [ "$1" == '--with-message' ]; then
-    $DIR/bash/add_message.sh
+    $DIR/zsh/add_message.sh
 fi
 
 printf 'Configuring...DONE\n'
