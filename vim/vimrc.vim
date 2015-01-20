@@ -26,16 +26,20 @@ call vundle#begin()
 " vundle will add the plugin folders to the runtimepath only after it has seen
 " the plugin's Plugin command.
 
+" Plugins
 Plugin 'gmarik/Vundle.vim'
-
-Plugin 'majutsushi/tagbar'
-Plugin 'nathanaelkane/vim-indent-guides'
 
 " Colors
 Plugin 'flazz/vim-colorschemes'
+Plugin 'chriskempson/base16-vim'
+
+" All around
 Plugin 'scrooloose/nerdtree'
 Plugin 'bling/vim-airline'
+Plugin 'majutsushi/tagbar'
+Plugin 'nathanaelkane/vim-indent-guides'
 
+" Complete
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'szw/vim-tags'
 
@@ -47,6 +51,9 @@ Plugin 'a.vim'
 
 " Python
 Plugin 'andviro/flake8-vim'
+
+" HTML & CSS
+Plugin '/mattn/emmet-vim/'
 
 call vundle#end()
 
@@ -73,7 +80,7 @@ filetype plugin indent on
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " DISPLAY SETTINGS
-colorscheme solarized   " sets the colorscheme
+colorscheme base16-codeschool   " sets the colorscheme
 set background=dark     " enable for dark terminals
 set scrolloff=5         " 2 lines above/below cursor when scrolling
 set showmatch           " show matching bracket (briefly jump)
@@ -120,6 +127,7 @@ set shiftround          " makes indenting a multiple of shiftwidth
 set expandtab           " turn a tab into spaces
 set laststatus=2        " the statusline is now always shown
 set noshowmode          " don't show the mode ("-- INSERT --") at the bottom
+set vb
 
 " misc settings
 set fileformat=unix     " file mode is unix
@@ -165,7 +173,7 @@ set textwidth=100
 set colorcolumn=+1
 
 " options for formatting text; see :h formatoptions
-set formatoptions=tcroqnj
+set formatoptions=tcroqn
 
 if v:version >= 704
   " The new Vim regex engine is currently slooooow as hell which makes syntax
@@ -280,10 +288,12 @@ map! <F8> <ESC>:tabnext<CR>i
 map <F7> :tabprevious<CR>
 map! <F7> <ESC>:tabprevious<CR>
 
+imap <C-t> <Esc>:tabnew<CR>a
+nmap <C-t> :tabnew<CR>
 " this makes vim's regex engine "not stupid"
 " see :h magic
-nnoremap / /\v
-vnoremap / /\v
+" nnoremap / /\v
+" vnoremap / /\v
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
