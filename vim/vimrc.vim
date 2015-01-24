@@ -98,7 +98,7 @@ set winaltkeys=no       " turns of the Alt key bindings to the gui menu
 set wildmode=longest,list,full
 set wildmenu            " completion with menu
 " This changes the default display of tab and CR chars in list mode
-set listchars=tab:▸\ ,eol:¬
+" set listchars=tab:▸\ ,eol:¬
 
 " The "longest" option makes completion insert the longest prefix of all
 " the possible matches; see :h completeopt
@@ -220,9 +220,9 @@ set splitright
 set number
 
 " Highlight uwanted spaces, nice for tsv files viewing
-set list
-set listchars=trail:·
-set listchars=tab:→→
+"set list
+"set listchars=trail:·
+"set listchars=tab:→→
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
