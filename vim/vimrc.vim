@@ -54,6 +54,7 @@ Plugin 'andviro/flake8-vim'
 
 " HTML & CSS
 Plugin '/mattn/emmet-vim/'
+Plugin 'mattn/webapi-vim'
 
 call vundle#end()
 
