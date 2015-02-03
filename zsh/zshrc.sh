@@ -13,7 +13,7 @@ fi
 
 # User configuration
 
-export PATH="/Users/tanyatik/bin:/usr/local/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/texbin:/opt/local/bin:/opt/local/sbin"
+export PATH="/home/tsborisova/vim/bin:/Users/tanyatik/bin:/usr/local/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/texbin:/opt/local/bin:/opt/local/sbin"
 export MANPATH="/usr/local/man:/opt/local/share/man/:$MANPATH"
 
 source $ZSH/oh-my-zsh.sh
@@ -39,3 +39,14 @@ extract () {
     echo "'$1' is not a valid file"
   fi
 }
+
+if [[ -z "$TMUX" ]]; then
+    tmux has-session &> /dev/null
+    if [ $? -eq 1 ]; then
+      exec tmux new
+      exit
+    else
+      exec tmux attach
+      exit
+    fi
+fi
