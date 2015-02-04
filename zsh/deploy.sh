@@ -12,3 +12,5 @@ cp "${DIR}/zprofile.sh" "${HOME}/.zprofile"
 
 source $HOME/.zshrc
 source $HOME/.zprofile
+
+echo 1
