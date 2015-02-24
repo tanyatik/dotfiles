@@ -56,6 +56,8 @@ Plugin 'andviro/flake8-vim'
 Plugin 'mattn/emmet-vim'
 Plugin 'mattn/webapi-vim'
 
+" Go
+Plugin 'fatih/vim-go'
 call vundle#end()
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -296,8 +298,8 @@ nmap <C-t> :tabnew<CR>
 " nnoremap / /\v
 " vnoremap / /\v
 
-set runtimepath+=~/vim/share/vim/vim74/macros/
-map lf :e +runtime\ less.vim <cfile><CR>
+" set runtimepath+=~/vim/share/vim/vim74/macros/
+" map lf :e +runtime\ less.vim <cfile><CR>
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
