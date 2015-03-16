@@ -55,6 +55,7 @@ Plugin 'andviro/flake8-vim'
 " HTML & CSS
 Plugin 'mattn/emmet-vim'
 Plugin 'mattn/webapi-vim'
+Plugin 'tmhedberg/matchit'
 
 " Go
 Plugin 'fatih/vim-go'
@@ -301,7 +302,6 @@ nmap <C-t> :tabnew<CR>
 " set runtimepath+=~/vim/share/vim/vim74/macros/
 " map lf :e +runtime\ less.vim <cfile><CR>
 
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                       ***  HERE BE PLUGINS  ***                         "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -351,6 +351,7 @@ let g:ycm_error_symbol = '✗'
 let g:ycm_warning_symbol = '⚠'
 nnoremap <C-]> :YcmCompleter GoToDeclaration<CR>
 
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                                vim-flake8                               "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -372,3 +373,54 @@ let g:indent_guides_guide_size = 1
 let g:indent_guides_start_level = 2
 let g:indent_guides_color_change_percent = 7
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                               start up                                  "
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+function! ToggleNERDTreeAndTagbar()
+    let w:jumpbacktohere = 1
+    " Detect which plugins are open
+    if exists('t:NERDTreeBufName')
+        let nerdtree_open = bufwinnr(t:NERDTreeBufName) != -1
+    else
+        let nerdtree_open = 0
+    endif
+    let tagbar_open = bufwinnr('__Tagbar__') != -1
+
+    " Perform the appropriate action
+    if nerdtree_open && tagbar_open
+        NERDTreeClose
+        TagbarClose
+    elseif nerdtree_open
+        TagbarOpen
+        wincmd J
+        wincmd k
+        wincmd l
+        wincmd L
+    elseif tagbar_open
+        NERDTree
+        wincmd J
+        wincmd k
+        wincmd l
+        wincmd L
+    else
+        NERDTree
+        TagbarOpen
+        wincmd J
+        wincmd k
+        wincmd l
+        wincmd L
+    endif
+
+    " Jump back to the original window
+    " tanyatik: seems to work without this
+"    for window in range(1, winnr('$'))
+"        execute window . 'wincmd w'
+"        if exists('w:jumpbacktohere')
+"            unlet w:jumpbacktohere
+"            break
+"        endif
+"    endfor
+    :vertical res 130
+    endfunction
+nnoremap <leader>\ :call ToggleNERDTreeAndTagbar()<CR>

@@ -13,8 +13,16 @@ fi
 
 # User configuration
 
-export PATH="/home/tsborisova/vim/bin:/Users/tanyatik/bin:/usr/local/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/texbin:/opt/local/bin:/opt/local/sbin"
+export LIBRARY_PATH="/usr/local/lib"
+export CPLUS_INCLUDE_PATH="/usr/local/include"
+export GOPATH="/Users/tsborisova/code/go"
 export MANPATH="/usr/local/man:/opt/local/share/man/:$MANPATH"
+export PATH="/Users/tsborisova/bin:/usr/local/bin:/usr/local/opt/llvm/bin/:/usr/bin:/bin:/usr/sbin:/sbin:/usr/texbin:/opt/local/bin:/opt/local/sbin:$GOPATH/bin"
+
+export LC_CTYPE=C
+export LANG=C
+
+alias ack-grep=ack
 
 source $ZSH/oh-my-zsh.sh
 
@@ -38,4 +46,11 @@ extract () {
   else
     echo "'$1' is not a valid file"
   fi
+}
+
+sfs ()
+{
+    local dest="$HOME"/mnt/"$1"/;
+    mkdir -p "$dest";
+    sshfs "$1": "$dest" -ocache=no -ofollow_symlinks
 }
