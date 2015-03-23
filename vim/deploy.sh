@@ -23,7 +23,7 @@ if [ $FAST_UPDATE -eq 0 ]; then
     if [ -d $HOME/.vim ]; then
         cp -r $HOME/.vim $HOME/old-vim-config
     fi
-    [ $VERBOSE -eq 1 ] && 'DONE\n'
+    [ $VERBOSE -eq 1 ] && echo 'DONE\n'
 
     if [ -a $HOME/.vimrc ]; then
         [ $VERBOSE -eq 1 ] && printf 'Removing existing .vimrc...'
