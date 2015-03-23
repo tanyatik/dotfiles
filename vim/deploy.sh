@@ -1,52 +1,60 @@
 #!/usr/bin/env bash
 set -e
 
-DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+DIR="$(pwd)"
 
-printf 'Creating directory for old vimconfig...\n'
-if [ -d $HOME/old-vim-config ]; then
-    rm -rf $HOME/old-vim-config
+echo "use ycm $USE_YCM"
+echo "fast update $FAST_UPDATE"
+echo "VERBOSE $VERBOSE"
+
+if [ $FAST_UPDATE -eq 0 ]; then
+    [ $VERBOSE -eq 1 ] && printf 'Creating directory for old vimconfig...'
+    if [ -d $HOME/old-vim-config ]; then
+        rm -rf $HOME/old-vim-config
+    fi
+    mkdir $HOME/old-vim-config
+    [ $VERBOSE -eq 1 ] && printf 'DONE\n'
+    [ $VERBOSE -eq 1 ] && printf 'Old config will be stored in "%s"\n' "$HOME/old-vim-config"
+
+    [ $VERBOSE -eq 1 ] && printf 'Copying old config...'
+    if [ -a $HOME/.vimrc ]; then
+        cp $HOME/.vimrc $HOME/old-vim-config
+    fi
+    if [ -d $HOME/.vim ]; then
+        cp -r $HOME/.vim $HOME/old-vim-config
+    fi
+    [ $VERBOSE -eq 1 ] && 'DONE\n'
+
+    if [ -a $HOME/.vimrc ]; then
+        [ $VERBOSE -eq 1 ] && printf 'Removing existing .vimrc...'
+        rm $HOME/.vimrc
+        [ $VERBOSE -eq 1 ] && printf 'DONE\n'
+    fi
+
+    if [ -d $HOME/.vim ]; then
+        [ $VERBOSE -eq 1 ] && printf 'Removing existing .vim directory...'
+        rm -rf $HOME/.vim
+        [ $VERBOSE -eq 1 ] && printf 'DONE\n'
+    fi
 fi
-mkdir $HOME/old-vim-config
-printf 'Creating directory for old vimconfig...DONE\n'
-printf 'Old config will be stored in "%s"\n' "$HOME/old-vim-config"
 
-printf 'Copying old config...\n'
-if [ -a $HOME/.vimrc ]; then
-    cp $HOME/.vimrc $HOME/old-vim-config
-fi
-if [ -d $HOME/.vim ]; then
-    cp -r $HOME/.vim $HOME/old-vim-config
-fi
-printf 'Copying old config...DONE\n'
+[ $VERBOSE -eq 1 ] && printf 'Copying new .vimrc...'
+cp $DIR/vim/vimrc.vim $HOME/.vimrc
+[ $VERBOSE -eq 1 ] && printf 'DONE\n'
 
-if [ -a $HOME/.vimrc ]; then
-    printf 'Removing existing .vimrc \n'
-    rm $HOME/.vimrc
-    printf 'Removing existing .vimrc...DONE\n'
-fi
-
-if [ -d $HOME/.vim ]; then
-    printf 'Removing existing .vim directory...\n'
-    rm -rf $HOME/.vim
-    printf 'Removing existing .vim directory...DONE\n'
-fi
-
-printf 'Copying new .vimrc...\n'
-cp $DIR/vimrc.vim $HOME/.vimrc
-printf 'Copying new .vimrc...DONE\n'
-
-printf 'Installing plugins...\n'
+[ $VERBOSE -eq 1 ] && printf 'Installing plugins...'
 vim +PluginInstall +qall
-printf 'Installing plugins...DONE\n'
+[ $VERBOSE -eq 1 ] && printf 'DONE\n'
 
-printf 'Installing YouCompleteMe C-family completer...\n'
-cd $HOME/.vim/bundle/YouCompleteMe/
-./install.sh --clang-completer
-printf 'Installing YouCompleteMe C-family completer...DONE\n'
+if [ $USE_YCM -eq 1 ]; then
+    [ $VERBOSE -eq 1 ] && printf 'Installing YouCompleteMe C-family completer...'
+    cd $HOME/.vim/bundle/YouCompleteMe/
+    ./install.sh --clang-completer
+    [ $VERBOSE -eq 1 ] && printf 'DONE\n'
 
-printf 'Copying default YouCompleteMe config...\n'
-cp $DIR/ycm_default_conf.py $HOME/.vim
-printf 'Copying default YouCompleteMe config...DONE\n'
+    [ $VERBOSE -eq 1 ] && printf 'Copying default YouCompleteMe config...'
+    cp $DIR/vim/ycm_default_conf.py $HOME/.vim
+    [ $VERBOSE -eq 1 ] && printf 'DONE\n'
+fi
 
 unset DIR
