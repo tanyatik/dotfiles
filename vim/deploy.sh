@@ -42,6 +42,11 @@ fi
 cp $DIR/vim/vimrc.vim $HOME/.vimrc
 [ $VERBOSE -eq 1 ] && printf 'DONE\n'
 
+if [ $USE_YCM -eq 0 ]; then
+    sed -e "s/Plugin 'Valloric\/YouCompleteMe'/"'"'" Plugin 'Valloric\/YouCompleteMe'/" \
+        < $DIR/vim/vimrc.vim > $HOME/.vimrc
+fi
+
 [ $VERBOSE -eq 1 ] && printf 'Installing plugins...'
 vim +PluginInstall +qall
 [ $VERBOSE -eq 1 ] && printf 'DONE\n'
