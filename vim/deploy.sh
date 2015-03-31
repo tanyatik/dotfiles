@@ -23,7 +23,7 @@ if [ $FAST_UPDATE -eq 0 ]; then
     if [ -d $HOME/.vim ]; then
         cp -r $HOME/.vim $HOME/old-vim-config
     fi
-    [ $VERBOSE -eq 1 ] && 'DONE\n'
+    [ $VERBOSE -eq 1 ] && echo 'DONE\n'
 
     if [ -a $HOME/.vimrc ]; then
         [ $VERBOSE -eq 1 ] && printf 'Removing existing .vimrc...'
@@ -41,6 +41,11 @@ fi
 [ $VERBOSE -eq 1 ] && printf 'Copying new .vimrc...'
 cp $DIR/vim/vimrc.vim $HOME/.vimrc
 [ $VERBOSE -eq 1 ] && printf 'DONE\n'
+
+if [ $USE_YCM -eq 0 ]; then
+    sed -e "s/Plugin 'Valloric\/YouCompleteMe'/"'"'" Plugin 'Valloric\/YouCompleteMe'/" \
+        < $DIR/vim/vimrc.vim > $HOME/.vimrc
+fi
 
 [ $VERBOSE -eq 1 ] && printf 'Installing plugins...'
 vim +PluginInstall +qall
