@@ -19,10 +19,9 @@ export GOPATH="/Users/tsborisova/code/go"
 export MANPATH="/usr/local/man:/opt/local/share/man/:$MANPATH"
 export PATH="/Users/tsborisova/bin:/usr/local/bin:/usr/local/opt/llvm/bin/:/usr/bin:/bin:/usr/sbin:/sbin:/usr/texbin:/opt/local/bin:/opt/local/sbin:$GOPATH/bin"
 
-export LC_CTYPE=C
-export LANG=C
-
 alias ack-grep=ack
+alias ya="~/trunk/arcadia/devtools/ya/ya"
+alias yavim="~/trunk/arcadia/devtools/ya/ya tool vim"
 
 source $ZSH/oh-my-zsh.sh
 

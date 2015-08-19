@@ -13,6 +13,7 @@ cp "$DIR/zsh/zshrc.sh" "$HOME/.zshrc"
 
 if [ $USE_TMUX -eq 1 ]; then
     [ $VERBOSE -eq 1 ] && printf 'Adding Tmux\n'
+    cp "$DIR/zsh/tmux.conf "${HOME}/.tmux.conf"
     cat $DIR/zsh/add_tmux.sh >> "${HOME}/.zshrc"
 fi
 
