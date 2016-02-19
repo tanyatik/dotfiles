@@ -35,7 +35,7 @@ Plugin 'chriskempson/base16-vim'
 
 " All around
 Plugin 'scrooloose/nerdtree'
-Plugin 'bling/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
 Plugin 'majutsushi/tagbar'
 Plugin 'nathanaelkane/vim-indent-guides'
 
@@ -84,7 +84,7 @@ filetype plugin indent on
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " DISPLAY SETTINGS
-colorscheme base16-codeschool   " sets the colorscheme
+" colorscheme solarized  " sets the colorscheme
 set background=dark     " enable for dark terminals
 set scrolloff=5         " 2 lines above/below cursor when scrolling
 set showmatch           " show matching bracket (briefly jump)
