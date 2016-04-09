@@ -84,7 +84,7 @@ filetype plugin indent on
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " DISPLAY SETTINGS
-" colorscheme solarized  " sets the colorscheme
+colorscheme luna  " sets the colorscheme
 set background=dark     " enable for dark terminals
 set scrolloff=5         " 2 lines above/below cursor when scrolling
 set showmatch           " show matching bracket (briefly jump)
@@ -108,6 +108,7 @@ set wildmenu            " completion with menu
 " the possible matches; see :h completeopt
 set completeopt=menu,menuone,longest
 set switchbuf=useopen,usetab
+
 
 " EDITOR SETTINGS
 set ignorecase          " case insensitive searching
@@ -195,7 +196,7 @@ if has("gui_macvim")
   set macmeta
 endif
 
-if has('unnamedplus')
+"if has('unnamedplus')
   " By default, Vim will not use the system clipboard when yanking/pasting to
   " the default register. This option makes Vim use the system default
   " clipboard.
@@ -204,11 +205,11 @@ if has('unnamedplus')
   " '+' (and this option makes Vim use it by default) and the selection one as
   " '*'.
   " See :h 'clipboard' for details.
-  set clipboard=unnamedplus,unnamed
-else
+"  set clipboard=unnamedplus,unnamed
+"else
   " Vim now also uses the selection system clipboard for default yank/paste.
-  set clipboard+=unnamed
-endif
+"  set clipboard+=unnamed
+"endif
 
 
 " The stupid python filetype plugin overrides our settings!
@@ -227,6 +228,11 @@ set number
 "set list
 "set listchars=trail:·
 "set listchars=tab:→→
+
+" VIMDIFF SETTINGS
+hi DiffAdd ctermfg=black
+hi DiffDelete ctermfg=black
+hi DiffChange ctermfg=black
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
