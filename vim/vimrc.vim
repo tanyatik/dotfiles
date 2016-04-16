@@ -305,8 +305,6 @@ nmap <C-t> :tabnew<CR>
 " nnoremap / /\v
 " vnoremap / /\v
 
-" set runtimepath+=~/vim/share/vim/vim74/macros/
-" map lf :e +runtime\ less.vim <cfile><CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                       ***  HERE BE PLUGINS  ***                         "
