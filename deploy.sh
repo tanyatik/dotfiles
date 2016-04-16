@@ -73,3 +73,4 @@ debugline 'Confiuring vim DONE'
 
 debug 'END\n'
 
+exit 0

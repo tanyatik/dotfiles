@@ -53,3 +53,6 @@ sfs ()
     mkdir -p "$dest";
     sshfs "$1": "$dest" -ocache=no -ofollow_symlinks
 }
+
+compaudit | sudo xargs chmod g-w
+compaudit | sudo xargs chown root
