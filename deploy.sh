@@ -64,13 +64,14 @@ done
 
 DIR="$(pwd)"
 
-# debugline 'Confiuring zsh\n'
-# $DIR/zsh/deploy.sh
+debugline 'Confiuring zsh...'
+$DIR/zsh/deploy.sh
+debugline 'Confiuring zsh DONE'
 
-debugline 'Confiuring vim'
+debugline 'Confiuring vim...'
 $DIR/vim/deploy.sh
 debugline 'Confiuring vim DONE'
 
-debug 'END\n'
+debug 'Success.'
 
 exit 0
