@@ -29,6 +29,11 @@ if [ $BACKUP -eq 0 ]; then
     fi
 fi
 
+if [ $USE_YCM -eq 0 ]; then
+    debugline 'Turn off YCM...'
+    sed -i -e "s/Plugin 'Valloric\/YouCompleteMe'/"'"'" Plugin 'Valloric\/YouCompleteMe'/" $DIR/vim/vimrc.vim
+fi
+
 # Copying new .vimrc
 if [ $COPY -eq 1 ]; then
     debugline 'Copying new .vimrc...'
@@ -45,11 +50,6 @@ else
         debugline 'Soft-linking new .vimrc...'
         ln -s $DIR/vim/vimrc.vim $HOME/.vimrc
     fi
-fi
-
-if [ $USE_YCM -eq 0 ]; then
-    debugline 'Turn off YCM...'
-    sed -i -e "s/Plugin 'Valloric\/YouCompleteMe'/"'"'" Plugin 'Valloric\/YouCompleteMe'/" $HOME/.vimrc
 fi
 
 # Installing vim plugins
