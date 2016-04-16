@@ -305,7 +305,6 @@ nmap <C-t> :tabnew<CR>
 " nnoremap / /\v
 " vnoremap / /\v
 
-" map lf :e +runtime\ less.vim <cfile><CR>
 
 vnoremap <C-r> "hy:%s/<C-r>=escape(@h, '^$.*\/~[]')<cr>//gc<left><left><left>
 vnoremap <C-f> "hy/<C-r>=escape(@h, '^$.*\/~[]')<cr><ESC>N
