@@ -15,7 +15,7 @@ if [ $COPY -eq 1 ]; then
     cp "$DIR/zsh/zshrc.sh" "$HOME/.zshrc"
 else
     debugline 'Soft-linking new .zshrc...'
-    cp "$DIR/zsh/zshrc.sh" "$HOME/.zshrc"
+    ln -s "$DIR/zsh/zshrc.sh" "$HOME/.zshrc"
 fi
 
 # Adding tmux.conf if necessary

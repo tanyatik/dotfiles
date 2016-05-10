@@ -40,7 +40,7 @@ Plugin 'majutsushi/tagbar'
 Plugin 'nathanaelkane/vim-indent-guides'
 
 " Complete
-" Plugin 'Valloric/YouCompleteMe'
+" " " Plugin 'Valloric/YouCompleteMe'
 Plugin 'szw/vim-tags'
 
 " SVN and Git
