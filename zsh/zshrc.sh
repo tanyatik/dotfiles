@@ -20,8 +20,14 @@ export MANPATH="/usr/local/man:/opt/local/share/man/:$MANPATH"
 export PATH="/Users/tsborisova/bin:/usr/local/bin:/usr/local/opt/llvm/bin/:/usr/bin:/bin:/usr/sbin:/sbin:/usr/texbin:/opt/local/bin:/opt/local/sbin:$GOPATH/bin"
 
 alias ack-grep=ack
-alias ya="~/trunk/arcadia/devtools/ya/ya"
-alias yavim="~/trunk/arcadia/devtools/ya/ya tool vim"
+
+alias cmd="/cygdrive/c/Windows/System32/cmd.exe"
+alias sublime="/cygdrive/c/Program\ Files/Sublime\ Text\ 3/sublime_text.exe"
+alias explorer="/cygdrive/c/Windows/explorer.exe"
+
+# Autojump requirements
+[[ -s /cygdrive/c/Users/taboris/.autojump/etc/profile.d/autojump.sh ]] && source /cygdrive/c/Users/taboris/.autojump/etc/profile.d/autojump.sh
+autoload -U compinit && compinit -u
 
 source $ZSH/oh-my-zsh.sh
 
@@ -54,5 +60,5 @@ sfs ()
     sshfs "$1": "$dest" -ocache=no -ofollow_symlinks
 }
 
-compaudit | sudo xargs chmod g-w
-compaudit | sudo xargs chown root
+# compaudit | sudo xargs chmod g-w
+# compaudit | sudo xargs chown root
