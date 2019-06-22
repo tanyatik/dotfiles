@@ -11,15 +11,17 @@ else
     plugins=(git svn pip)
 fi
 
+RPROMPT="[%D{%y/%m/%f}|%@]"
+
 # User configuration
 
 export LIBRARY_PATH="/usr/local/lib"
 export CPLUS_INCLUDE_PATH="/usr/local/include"
-export GOPATH="/Users/tsborisova/code/go"
 export MANPATH="/usr/local/man:/opt/local/share/man/:$MANPATH"
-export PATH="/Users/tsborisova/bin:/usr/local/bin:/usr/local/opt/llvm/bin/:/usr/bin:/bin:/usr/sbin:/sbin:/usr/texbin:/opt/local/bin:/opt/local/sbin:$GOPATH/bin"
-
+export GOROOT="/usr/local/go"
+export PATH="$(brew --prefix coreutils)/libexec/gnubin:/Users/tsborisova/bin:/usr/local/bin:/usr/local/opt/llvm/bin/:/bin:/usr/sbin:/sbin:/usr/texbin:/opt/local/bin:/opt/local/sbin:$GOROOT/bin:/improbable/tools/latest/mac:/usr/local/Cellar/openssl/1.0.2p/bin:/usr/bin:/usr/local/opt/openvpn/sbin:$PATH"
 alias ack-grep=ack
+export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_202.jdk/Contents/Home
 
 alias cmd="/cygdrive/c/Windows/System32/cmd.exe"
 alias sublime="/cygdrive/c/Program\ Files/Sublime\ Text\ 3/sublime_text.exe"
@@ -53,12 +55,22 @@ extract () {
   fi
 }
 
-sfs ()
-{
-    local dest="$HOME"/mnt/"$1"/;
-    mkdir -p "$dest";
-    sshfs "$1": "$dest" -ocache=no -ofollow_symlinks
-}
+# add tmux on login
+if [[ -z "$TMUX" ]]; then
+    tmux has-session &> /dev/null
+    if [ $? -eq 1 ]; then
+      exec tmux new
+      exit
+    else
+      exec tmux attach
+      exit
+    fi
+fi
 
-# compaudit | sudo xargs chmod g-w
-# compaudit | sudo xargs chown root
+eval "$(direnv hook zsh)"
+
+# exec ssh-agent $SHELL -s 10<&0 << EOF
+#    ssh-add
+#    exec $BASH <&10-
+#EOF
+export PATH="/usr/local/opt/postgresql@9.6/bin:$PATH"
