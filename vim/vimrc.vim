@@ -50,7 +50,7 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'a.vim'
 
 " Python
-Plugin 'andviro/flake8-vim'
+" Plugin 'andviro/flake8-vim'
 
 " HTML & CSS
 Plugin 'mattn/emmet-vim'
@@ -84,7 +84,7 @@ filetype plugin indent on
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " DISPLAY SETTINGS
-colorscheme luna  " sets the colorscheme
+" colorscheme luna  " sets the colorscheme
 set background=dark     " enable for dark terminals
 set scrolloff=5         " 2 lines above/below cursor when scrolling
 set showmatch           " show matching bracket (briefly jump)
