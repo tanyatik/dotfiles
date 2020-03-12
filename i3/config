@@ -11,13 +11,6 @@
 
 set $mod Mod1
 
-# Layouts
-exec "setxkbmap -layout us,ru"
-# Swap Alt and Win, Mac-like
-exec "setxkbmap -option altwin:swap_lalt_lwin"
-# Mac-style switching of layouts
-exec "setxkbmap -option grp:alt_space_toggle"
-
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
 font pango:monospace 10
@@ -173,6 +166,13 @@ bindsym --release Shift+Print exec scrot -s 'screenshot_%Y%m%d_%H%M%S.png' -e 'm
 
 # Start applications on startup
 exec rescuetime
+
+# Layouts
+exec "setxkbmap -layout us,ru"
+# Swap Alt and Win, Mac-like
+exec "setxkbmap -option altwin:swap_lalt_lwin"
+# Mac-style switching of layouts
+exec "setxkbmap -option grp:alt_space_toggle"
 
 # Start workspaces on startup
 for_window [class="(?i)chrome"] move container to workspace 1

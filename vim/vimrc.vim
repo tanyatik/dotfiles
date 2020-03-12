@@ -40,7 +40,7 @@ Plugin 'majutsushi/tagbar'
 Plugin 'nathanaelkane/vim-indent-guides'
 
 " Complete
-" " " " Plugin 'Valloric/YouCompleteMe'
+" " " " " Plugin 'Valloric/YouCompleteMe'
 Plugin 'szw/vim-tags'
 
 " SVN and Git
@@ -95,6 +95,7 @@ set ruler               " show cursor position in status bar
 set title               " show file in titlebar
 set cursorline          " highlights the current line
 set winaltkeys=no       " turns of the Alt key bindings to the gui menu
+set t_vb=
 
 " When you type the first tab, it will complete as much as possible, the second
 " tab hit will provide a list, the third and subsequent tabs will cycle through
